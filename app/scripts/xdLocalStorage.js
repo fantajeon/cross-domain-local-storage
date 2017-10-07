@@ -35,9 +35,11 @@ function receiveMessage(event) {
   if (data && data.namespace === MESSAGE_NAMESPACE_IFRAME) {
     if (data.id === 'iframe-ready') {
       var ns = data.ns;
-      var obj = window.xdLocalStorage.domains[ns];
-      obj.state = "ready";
-      obj.initCallback(data);
+      if( ns in window.xdLocalStorage.domains ) {
+        var obj = window.xdLocalStorage.domains[ns];
+        obj.state = "ready";
+        obj.initCallback(data);
+      }
     } else {
       applyCallback(data);
     }
