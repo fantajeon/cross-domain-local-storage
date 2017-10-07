@@ -13,7 +13,7 @@ Cross Domain Local Storage Separately
 ## Problem
 
 As for now, standard HTML5 Web Storage (a.k.a Local Storage) doesn't now allow cross domain data sharing.
-This may be a big problem in an organization which have a lot of sub domains and wants to share client data between them.
+This may be a big problem in an organization which have a lot of sub domains and wants to share client data between them. However, you maybe want to save/delete/clear key&value for each sub domains.
 
 ## Solution
 
