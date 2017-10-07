@@ -13,4 +13,6 @@ function extend(object, defaultObject) {
   return result;
 }
 
-export default {extend}
+export default { 
+  extend: extend
+}

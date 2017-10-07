@@ -1,6 +1,6 @@
 {
   "name": "xdlocalstorage-separately",
-  "version": "1.0.8",
+  "version": "1.0.7",
   "main": "dist/xdLocalStorage.min.js",
   "repository": "https://github.com/fantajeon/cross-domain-local-storage-separately.git",
   "author": "Hyeokjune Jeon <fantajeon@naver.com>",
@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "webpack -d --watch --config webpack.config.dev.js",
     "server": "webpack-dev-server -d --watch --history-api-fallback --host 0.0.0.0 --port $PORT --disableHostCheck=true --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "build": "webpack --config webpack.config.prod.js --optimize-minimize"
   },
   "keywords": [
     "local storage",
@@ -22,8 +22,10 @@
     "webpack-dev-server": "^2.9.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2017": "^6.24.1"
   }
 }
