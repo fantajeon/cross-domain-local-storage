@@ -78,8 +78,8 @@ yarn add xdlocalstorage-separately
             iframeUrl:'path to your html from step 1',
             nameSpace: "ls-1",    /* required uniquely */
             //an option function to be called right after the iframe was loaded and ready for action
-            initCallback: function () {
-                console.log('Got iframe ready');
+            initCallback: function (data) {
+                console.log('Got iframe ready:' + data.ns);
             }
         }
     );
