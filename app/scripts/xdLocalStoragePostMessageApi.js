@@ -1,14 +1,22 @@
 /**
  * Created by dagan on 07/04/2014.
  */
+import XdUtils from './services/xd-utils.js';
+
+
 'use strict';
 /* global XdUtils */
-(function () {
+function init(nameSpace) {
+  if( nameSpace === undefined ) {
+    throw "must specify nameSpace(unique)";
+  }
 
-  var MESSAGE_NAMESPACE = 'cross-domain-local-message';
+  var MESSAGE_NAMESPACE_CALLER = 'cross-domain-local-message-caller';
+  var MESSAGE_NAMESPACE_IFRAME = 'cross-domain-local-message-iframe';
 
   var defaultData = {
-    namespace: MESSAGE_NAMESPACE
+    namespace: MESSAGE_NAMESPACE_IFRAME,
+    ns: nameSpace,
   };
 
   function postData(id, data) {
@@ -68,7 +76,7 @@
       //not our message, can ignore
     }
 
-    if (data && data.namespace === MESSAGE_NAMESPACE) {
+    if (data && data.namespace === MESSAGE_NAMESPACE_CALLER) {
       if (data.action === 'set') {
         setData(data.id, data.key, data.value);
       } else if (data.action === 'get') {
@@ -95,11 +103,20 @@
 
   function sendOnLoad() {
     var data = {
-      namespace: MESSAGE_NAMESPACE,
-      id: 'iframe-ready'
+      namespace: MESSAGE_NAMESPACE_IFRAME,
+      id: 'iframe-ready',
+      ns: nameSpace,
     };
     parent.postMessage(JSON.stringify(data), '*');
   }
-  //on creation
+
   sendOnLoad();
-})();
+}
+
+var api = {
+  init: init
+}
+
+window.xdLocalStorageEmbedded = api;
+
+export default {api}

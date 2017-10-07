@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class=no-js><head><meta http-equiv=X-UA-Compatible content="IE=9"><meta charset=utf-8><title>test</title><meta name=description content=""><meta name=viewport content="width=device-width"><link rel="shortcut icon" href=/favicon.ico><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel=stylesheet href=styles/styles.css><script src=scripts/xdLocalStorage.min.js></script><script src=scripts/xdLocalStoragePostMessageApi.min.js></script><script src=scripts/ng-xdLocalStorage.min.js></script><script type=text/javascript>xdLocalStorage.init(
+<!doctype html><html class="no-js"><head><meta http-equiv="X-UA-Compatible" content="IE=9"/><meta charset="utf-8"><title>test</title><meta name="description" content=""><meta name="viewport" content="width=device-width"><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="styles/styles.css"><script src="scripts/xdLocalStorage.js"></script><script src="scripts/xdLocalStoragePostMessageApi.js"></script><script src="scripts/services/xd-utils.js"></script><script src="scripts/xdLocalStorage.js"></script><script type="text/javascript">xdLocalStorage.init(
                 {
                     iframeUrl:'https://rawgit.com/ofirdagan/cross-domain-local-storage/master/app/views/cross-domain-local-storage.html',
                     initCallback: function () {
@@ -61,11 +61,11 @@
             xdLocalStorage.clear(function (data) {
                 document.getElementById('result').innerHTML = 'LocalStorage was cleared.';
             });
-        }</script><body><!--[if lt IE 10]>
+        }</script></head><body><!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]--><h1 class=header>Cross Domain Local Storage</h1><div class=content><div><div class=label>Enter key name:</div><input id=keyInput></div><div><div class=label>Enter value:</div><input id=valueInput></div><button onclick=setValue()>Set Value</button><div><div class=label>Enter key to get:</div><input id=getInput></div><button onclick=getItem()>Get Key</button><div><div class=label>Enter key to remove:</div><input id=removeInput></div><button onclick=removeItem()>Remove Key</button><div><div class=label>Enter key index:</div><input id=keyNameInput></div><button onclick=keyName()>Key</button><div><button onclick=clearAll()>Clear all</button></div><div><div class=label>Result:</div><div id=result></div></div></div><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+<![endif]--><h1 class="header">Cross Domain Local Storage</h1><div class="content"><div><div class="label">Enter key name:</div><input id="keyInput" type="text"/></div><div><div class="label">Enter value:</div><input id="valueInput" type="text"/></div><button onclick="setValue()">Set Value</button><div><div class="label">Enter key to get:</div><input id="getInput" type="text"/></div><button onclick="getItem()">Get Key</button><div><div class="label">Enter key to remove:</div><input id="removeInput" type="text"/></div><button onclick="removeItem()">Remove Key</button><div><div class="label">Enter key index:</div><input id="keyNameInput" type="text"/></div><button onclick="keyName()">Key</button><div><button onclick="clearAll()">Clear all</button></div><div><div class="label">Result:</div><div id="result"></div></div></div><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
         e=o.createElement(i);r=o.getElementsByTagName(i)[0];
         e.src='//www.google-analytics.com/analytics.js';
         r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-XXXXX-X');ga('send','pageview');</script>
+    ga('create','UA-XXXXX-X');ga('send','pageview');</script><script type="text/javascript" src="xdLocalStoragePostMessageApi.min.js"></script><script type="text/javascript" src="xdLocalStorage.min.js"></script></body></html>
