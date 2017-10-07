@@ -1,8 +1,8 @@
 {
-  "name": "cross-domain-local-storage",
-  "version": "1.0.0",
+  "name": "xdlocalstorage-separately",
+  "version": "1.0.1",
   "main": "index.js",
-  "repository": "https://github.com/fantajeon/cross-domain-local-storage.git",
+  "repository": "https://github.com/fantajeon/cross-domain-local-storage-separately.git",
   "author": "Hyeokjune Jeon <fantajeon@naver.com>",
   "license": "MIT",
   "scripts": {
