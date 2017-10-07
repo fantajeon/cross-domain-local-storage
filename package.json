@@ -10,6 +10,12 @@
     "server": "webpack-dev-server -d --watch --history-api-fallback --host 0.0.0.0 --port $PORT --disableHostCheck=true --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js"
   },
+  "keywords": [
+      "local storage",
+      "cross domain web storage",
+      "web storage"
+  ],
+  "main": "dist/xdLocalStorage.min.js",
   "dependencies": {
     "html-webpack-plugin": "^2.30.1",
     "path": "^0.12.7",
