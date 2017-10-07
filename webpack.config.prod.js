@@ -37,11 +37,6 @@ module.exports = {
       minimize: true
     }),
     HtmlWebpackPluginConfig,
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
-      },
-    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
   ]
 }
