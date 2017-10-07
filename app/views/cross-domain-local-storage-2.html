@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Cross domain local storage</title>
-    <script src="../../dist/xdLocalStoragePostMessageApi.min.js"></script>
+    <script src="../../dist/xdLocalStorage.min.js"></script>
 </head>
 <body>
 This is the magical iframe
@@ -10,7 +10,7 @@ This is the magical iframe
 <script type="text/javascript">
 window.onload = function() {
   // must call init function
-  xdLocalStorageEmbedded.init( "ls2" );
+  xdLocalStorageEmbedded.init( "ls2.domain" );
 };
 </script>
 </body>
