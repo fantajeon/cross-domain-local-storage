@@ -20,6 +20,7 @@
 
 <h1 class="header">Cross Domain Local Storage</h1>
 <div class="content">
+    <div><div class="label">Enter NS(MUST): </div><input id="nsInput" type="text" /></div>
     <div><div class="label">Enter key name: </div><input id="keyInput" type="text" /></div>
     <div><div class="label">Enter value: </div><input id="valueInput" type="text" /></div>
     <button onclick="setValue()">Set Value</button>
@@ -44,8 +45,8 @@
 </script>
 
     <script type="text/javascript">
-      var ns = 'ls';
       window.onload = function() {
+        // Unfortunately, this source is not completely test because of both are same domain(rawgit.com)
         xdLocalStorage.init(
                 {
                     iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage/master/app/views/cross-domain-local-storage-1.html',
@@ -53,7 +54,7 @@
                         console.log('Got iframe ready: ns=' +  data.ns);
                         xdLocalStorage.setItem(data.ns, 'check', 'no callback');
                     },
-                    nameSpace: 'ls'
+                    nameSpace: 'ls1'
                 }
         );
         xdLocalStorage.init(
@@ -63,16 +64,26 @@
                         console.log('Got iframe ready: ns=' +  data.ns);
                         xdLocalStorage.setItem(data.ns, 'check', 'no callback');
                     },
-                    nameSpace: 'ls'
+                    nameSpace: 'ls2'
                 }
         );
+
       };
+        function ns() {
+          var ns = document.getElementById("nsInput").value;
+          if( ns ) {
+            return ns;
+          } else {
+            alert("You must enter a ns");
+          }
+        }
+
         function setValue () {
             document.getElementById('result').innerHTML ='';
             var key = document.getElementById("keyInput").value;
             if(key) {
                 var value = document.getElementById("valueInput").value;
-                xdLocalStorage.setItem(ns, key, value, function (data) {
+                xdLocalStorage.setItem(ns(), key, value, function (data) {
                     if(data.success) {
                         document.getElementById('result').innerHTML = 'Your data has been successfully stored.';
                     } else {
@@ -87,7 +98,7 @@
             document.getElementById('result').innerHTML ='';
             var key = document.getElementById("getInput").value;
             if(key) {
-                xdLocalStorage.getItem(ns, key, function (data) {
+                xdLocalStorage.getItem(ns(), key, function (data) {
                     document.getElementById('result').innerHTML = 'got value: "' + data.value + '" for key: "' + data.key + '"';
                 });
             } else {
@@ -98,7 +109,7 @@
             document.getElementById('result').innerHTML ='';
             var key = document.getElementById("removeInput").value;
             if(key) {
-                xdLocalStorage.removeItem(ns, key, function (data) {
+                xdLocalStorage.removeItem(ns(), key, function (data) {
                     document.getElementById('result').innerHTML = 'Key was removed';
                 });
             } else {
@@ -109,7 +120,7 @@
             document.getElementById('result').innerHTML ='';
             var index = document.getElementById("keyNameInput").value;
             if(index) {
-                xdLocalStorage.key(ns, index, function (data) {
+                xdLocalStorage.key(ns(), index, function (data) {
                     document.getElementById('result').innerHTML = 'Key name for index ' + index + ' is: '+data.key;
                 });
             } else {
@@ -118,7 +129,7 @@
         }
         function clearAll () {
             document.getElementById('result').innerHTML ='';
-            xdLocalStorage.clear(ns, function (data) {
+            xdLocalStorage.clear(ns(), function (data) {
                 document.getElementById('result').innerHTML = 'LocalStorage was cleared.';
             });
         }
