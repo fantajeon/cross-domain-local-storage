@@ -29,16 +29,20 @@ They're also have a size limit (4K for all cookies together)
 
 ## Installation
 
-Download latest release from [here](https://github.com/ofirdagan/cross-domain-local-storage/releases) or use bower/npm (recommended)
+Download latest release from [here](https://github.com/fantajeon/cross-domain-local-storage-separately/dist) or use bower/npm (recommended)
 ```sh
-bower install xdLocalStorage --save
+npm install --save xdlocalstorage-separately
 or
-npm install --save xdlocalstorage
+yarn add xdlocalstorage-separately
 ```
 
 ## Usage
 
-- Create an empty html with the following content:
+- You have two steps: 
+  - write embedded html.
+  - write client html.
+
+- Create an empty(embedded) html with the following content:
 
 ```html
 <!DOCTYPE html>
@@ -48,6 +52,12 @@ npm install --save xdlocalstorage
 </head>
 <body>
     This is the magical iframe
+    <script type="text/javascript">
+    window.onload = function() {
+      // must call init function
+      xdLocalStorageEmbedded.init( "ls1" );
+    };
+</script>
 </body>
 </html>
 ```
@@ -66,6 +76,7 @@ npm install --save xdlocalstorage
         {
             /* required */
             iframeUrl:'path to your html from step 1',
+            nameSpace: "ls-1",    /* required uniquely */
             //an option function to be called right after the iframe was loaded and ready for action
             initCallback: function () {
                 console.log('Got iframe ready');
@@ -78,61 +89,20 @@ npm install --save xdlocalstorage
 
 ```js
     // Store
-    xdLocalStorage.setItem(key, value, function (data) { /* callback */ });
+    xdLocalStorage.setItem("ls1", key, value, function (data) { /* callback */ });
 
     // Retrieve
-    xdLocalStorage.getItem(key, function (data) { /* callback */ });
+    xdLocalStorage.getItem(ls1", key, function (data) { /* callback */ });
 
     // Remove
-    xdLocalStorage.removeItem(key, function (data) { /* callback */ });
+    xdLocalStorage.removeItem(ls1", key, function (data) { /* callback */ });
 
     // Key Name
-    xdLocalStorage.key(index, function (data) { /* callback */ });
+    xdLocalStorage.key(ls1", index, function (data) { /* callback */ });
 
     // Clear All
-    xdLocalStorage.clear(function (data) { /* callback */ });
+    xdLocalStorage.clear(ls1", function (data) { /* callback */ });
 ```
-
-## Angular Support
-
-*UPDATE:*  Since version 2.0.0 the xdLocalStorage service supoprts promise interface hence no more annoying callbacks :)
-
-- import `ng-xdLocalStorage.min.js` instead of `xdLocalStorage.min.js`
-
-- include xdLocalStorage module and call init in a run block.
-
-```js
-angular.module('yourModule', ['xdLocalStorage']).run(function (xdLocalStorage) {
-    xdLocalStorage.init(
-     {
-        /* required */
-        iframeUrl:'path to your html from step 1'
-    }).then(function () {
-        //an option function to be called once the iframe was loaded and ready for action
-        console.log('Got iframe ready');
-    });
-});
-
-```
-
-- inject xdLocalStorage where ever you want and use the API
-
-```js
-angular.module('yourModule').run(function(xdLocalStorage) {
-    xdLocalStorage.getItem(key).then(function (response) {
-    	console.log(response.value);
-    });
-});
-
-```
-
-## Demo
-
-**Here's the <a href="https://rawgit.com/ofirdagan/cross-domain-local-storage/master/app/index.html" target="_blank">demo</a>**
-
-## Tests
-
-I covered the basic API with tests [here](https://github.com/ofirdagan/cross-domain-local-storage/blob/master/test/specs/xdLocalStorage.js)
 
 ## Limitations
 
