@@ -17,10 +17,6 @@ var options = {
 };
 var requestId = -1;
 var requests = {};
-var exporter = {
-  domains: {},
-  state: "init"
-};
 
 function applyCallback(data) {
   if (requests[data.id]) {
@@ -39,7 +35,7 @@ function receiveMessage(event) {
   if (data && data.namespace === MESSAGE_NAMESPACE_IFRAME) {
     if (data.id === 'iframe-ready') {
       var ns = data.ns;
-      var obj = exporter.domains[ns];
+      var obj = window.xdLocalStorage.domains[ns];
       obj.state = "ready";
       obj.initCallback(data);
     } else {
@@ -50,6 +46,7 @@ function receiveMessage(event) {
 
 
 function buildMessage(iframe, action, key, value, callback) {
+  if( iframe === undefined || iframe === null ) return;
   requestId++;
   requests[requestId] = callback;
   var data = {
@@ -92,12 +89,16 @@ function createiframe(exporter, customOptions) {
 function isDomReady() {
   return (document.readyState === 'complete');
 }
-  //callback is optional for cases you use the api before window load.
-exporter.init = function(customOptions) {
-  return new Promise( (resolve, reject) => {
-      if ( this.state === "init" ) {
+
+var exporter = {
+  domains: {},
+  state: "init",
+  init: function(customOptions) {
+    var that = this;
+    return new Promise( (resolve, reject) => {
+      if ( that.state === "init" ) {
         HookMessage();
-        this.state = "hooked";
+        that.state = "hooked";
       }
       if (!customOptions.iframeUrl) {
         throw 'You must specify iframeUrl';
@@ -108,10 +109,9 @@ exporter.init = function(customOptions) {
       }
 
       if (isDomReady()) {
-        createiframe(this, customOptions);
+        createiframe(that, customOptions);
         resolve({});
       } else {
-        var that = this;
         if (document.addEventListener) {
           // All browsers expect IE < 9
           document.addEventListener('readystatechange', function () {
@@ -135,30 +135,33 @@ exporter.init = function(customOptions) {
         }
       }
     });
-  }
-
-exporter.setItem = function (ns, key, value, callback) {
+  },
+  setItem: function (ns, key, value, callback) {
     buildMessage(this.domains[ns], 'set', key, value, callback);
-  };
-exporter.getItem = function (ns, key, callback) {
+  },
+  getItem: function (ns, key, callback) {
     buildMessage(this.domains[ns], 'get', key,  null, callback);
-  };
-exporter.removeItem = function (ns, key, callback) {
+  },
+  removeItem: function (ns, key, callback) {
     buildMessage(this.domains[ns], 'remove', key,  null, callback);
-  };
-exporter.key = function (ns, index, callback) {
+  },
+  key: function (ns, index, callback) {
     buildMessage(this.domains[ns], 'key', index,  null, callback);
-  };
-exporter.getSize = function(ns, callback) {
+  },
+  getSize: function(ns, callback) {
     buildMessage(this.domains[ns], 'size', null, null, callback);
-  };
-exporter.getLength = function(ns, callback) {
+  },
+  getLength: function(ns, callback) {
     buildMessage(this.domains[ns], 'length', null, null, callback);
-  };
-exporter.clear = function (ns, callback) {
+  },
+  clear: function (ns, callback) {
     buildMessage(this.domains[ns], 'clear', null,  null, callback);
-  };
+  }
+}
 
-window.xdLocalStorage = exporter;
-
+if( window.xdLocalStorage === undefined || window.xdLocalStorage === null ) {
+  window.xdLocalStorage = exporter;
+} else {
+  exporter = window.xdLocalStorage;
+}
 export default exporter
