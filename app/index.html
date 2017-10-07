@@ -48,7 +48,7 @@
       window.onload = function() {
         var p = xdLocalStorage.init(
                 {
-                    iframeUrl:'https://cdn.rawgit.com/fantajeon/cross-domain-local-storage/5bb67794/app/views/cross-domain-local-storage.html',
+                    iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage/master/app/views/cross-domain-local-storage.html',
                     initCallback: function (data) {
                         console.log('Got iframe ready: ns=' +  data.ns);
                         xdLocalStorage.setItem(data.ns, 'check', 'no callback');
@@ -56,7 +56,6 @@
                     nameSpace: 'ls'
                 }
         );
-        p.then( () => xdLocalStorageEmbedded.init("ls") );
       };
         function setValue () {
             document.getElementById('result').innerHTML ='';
