@@ -1,6 +1,6 @@
 {
   "name": "xdlocalstorage-separately",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "main": "dist/xdLocalStorage.min.js",
   "repository": "https://github.com/fantajeon/cross-domain-local-storage-separately.git",
   "author": "Hyeokjune Jeon <fantajeon@naver.com>",
