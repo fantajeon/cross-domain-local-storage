@@ -27,7 +27,8 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   module: {
     loaders: [
-      { test: /\.js$/, 
+      { 
+        test: /\.js$/, 
         loader: 'babel-loader', 
         exclude: /node_modules/ ,
         query: {
