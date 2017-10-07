@@ -1,4 +1,4 @@
-Cross Domain Local Storage
+Cross Domain Local Storage Separately
 ==========================
 
 1. [Problem](#problem)
@@ -20,7 +20,7 @@ This may be a big problem in an organization which have a lot of sub domains and
 
 ## Solution
 
-xdLocalStorage is a lightweight js library which implements LocalStorage interface and support cross domain storage by using iframe post message communication.
+xdLocalStorage is a lightweight js library which implements LocalStorage interface and support cross domain storage by using iframe post message communication independently.
 
 ## Why not use cookies?
 
