@@ -7,10 +7,7 @@ Cross Domain Local Storage Separately
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [API](#api)
-8. [Angular Support](#angular-support)
-9. [Demo](#demo)
-10. [Tests](#tests)
-11. [Limitations](#limitations)
+7. [Limitations](#limitations)
 
 
 ## Problem
@@ -92,16 +89,16 @@ yarn add xdlocalstorage-separately
     xdLocalStorage.setItem("ls1", key, value, function (data) { /* callback */ });
 
     // Retrieve
-    xdLocalStorage.getItem(ls1", key, function (data) { /* callback */ });
+    xdLocalStorage.getItem("ls1", key, function (data) { /* callback */ });
 
     // Remove
-    xdLocalStorage.removeItem(ls1", key, function (data) { /* callback */ });
+    xdLocalStorage.removeItem("ls1", key, function (data) { /* callback */ });
 
     // Key Name
-    xdLocalStorage.key(ls1", index, function (data) { /* callback */ });
+    xdLocalStorage.key("ls1", index, function (data) { /* callback */ });
 
     // Clear All
-    xdLocalStorage.clear(ls1", function (data) { /* callback */ });
+    xdLocalStorage.clear("ls1", function (data) { /* callback */ });
 ```
 
 ## Limitations
