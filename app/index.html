@@ -49,7 +49,7 @@
         // Unfortunately, this source is not completely test because of both are same domain(rawgit.com)
         xdLocalStorage.init(
                 {
-                    iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage-separately/master/app/views/cross-domain-local-storage-1.html',
+                    iframeUrl:'https://cdn.rawgit.com/fantajeon/cross-domain-local-storage-separately/master/app/views/cross-domain-local-storage-1.html',
                     initCallback: function (data) {
                         console.log('Got iframe ready: ns=' +  data.ns);
                         xdLocalStorage.setItem(data.ns, 'check', 'no callback');
@@ -59,7 +59,7 @@
         );
         xdLocalStorage.init(
                 {
-                    iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage-separately/master/app/views/cross-domain-local-storage-2.html',
+                    iframeUrl:'https://cdn.rawgit.com/fantajeon/cross-domain-local-storage-separately/master/app/views/cross-domain-local-storage-2.html',
                     initCallback: function (data) {
                         console.log('Got iframe ready: ns=' +  data.ns);
                         xdLocalStorage.setItem(data.ns, 'check', 'no callback');
