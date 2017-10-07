@@ -46,9 +46,19 @@
     <script type="text/javascript">
       var ns = 'ls';
       window.onload = function() {
-        var p = xdLocalStorage.init(
+        xdLocalStorage.init(
                 {
-                    iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage/master/app/views/cross-domain-local-storage.html',
+                    iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage/master/app/views/cross-domain-local-storage-1.html',
+                    initCallback: function (data) {
+                        console.log('Got iframe ready: ns=' +  data.ns);
+                        xdLocalStorage.setItem(data.ns, 'check', 'no callback');
+                    },
+                    nameSpace: 'ls'
+                }
+        );
+        xdLocalStorage.init(
+                {
+                    iframeUrl:'https://rawgit.com/fantajeon/cross-domain-local-storage/master/app/views/cross-domain-local-storage-2.html',
                     initCallback: function (data) {
                         console.log('Got iframe ready: ns=' +  data.ns);
                         xdLocalStorage.setItem(data.ns, 'check', 'no callback');
