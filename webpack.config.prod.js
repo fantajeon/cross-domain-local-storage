@@ -18,8 +18,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 
 module.exports = {
   entry: {
-    'xdLocalStoragePostMessageApi': './app/scripts/xdLocalStoragePostMessageApi.js',
-    'xdLocalStorage': './app/scripts/xdLocalStorage.js',
+    'xdLocalStorage': './app/scripts/main.js'
   },
   output: {
     path: path.join(basedir,'/dist'),

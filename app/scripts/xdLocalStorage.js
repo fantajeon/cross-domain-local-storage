@@ -1,5 +1,6 @@
 /**
  * Created by dagan on 07/04/2014.
+ * Modified by fantajeon on 10/08/2017.
  */
 
 import XdUtils from './services/xd-utils.js';
