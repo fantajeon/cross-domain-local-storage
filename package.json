@@ -1,10 +1,14 @@
 {
   "name": "xdlocalstorage-separately",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "dist/xdLocalStorage.min.js",
   "repository": "https://github.com/fantajeon/cross-domain-local-storage-separately.git",
   "author": "Hyeokjune Jeon <fantajeon@naver.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fantajeon/cross-domain-local-storage-separately/issues"
+  },
+  "homepage": "https://github.com/fantajeon/cross-domain-local-storage-separately",
   "scripts": {
     "dev": "webpack -d --watch --config webpack.config.dev.js",
     "server": "webpack-dev-server -d --watch --history-api-fallback --host 0.0.0.0 --port $PORT --disableHostCheck=true --config webpack.config.dev.js",
