@@ -1,4 +1,4 @@
-Cross Domain Local Storage Separately
+Cross Domain Local Storage Separately - Based on iframe tag
 ==========================
 
 1. [Problem](#problem)
@@ -52,7 +52,7 @@ yarn add xdlocalstorage-separately
     <script type="text/javascript">
     window.onload = function() {
       // must call init function
-      xdLocalStorageEmbedded.init( "ls1" );
+      xdLocalStorageEmbedded.init( "sub.domain.com" );
     };
 </script>
 </body>
@@ -73,7 +73,7 @@ yarn add xdlocalstorage-separately
         {
             /* required */
             iframeUrl:'path to your html from step 1',
-            nameSpace: "ls-1",    /* required uniquely */
+            nameSpace: "sub.domain.com",    /* required uniquely */
             //an option function to be called right after the iframe was loaded and ready for action
             initCallback: function (data) {
                 console.log('Got iframe ready:' + data.ns);
@@ -81,24 +81,43 @@ yarn add xdlocalstorage-separately
         }
     );
 ```
+## ES6
+- only once import package
+- yarn add xdlocalstorage-separately
 
+``` js
+
+import 'xdlocalstorage-separately'
+
+windows.xdLocalStorage.init(
+        {
+            /* required */
+            iframeUrl:'path to your html from step 1',
+            nameSpace: "sub.domain.com",    /* required uniquely */
+            //an option function to be called right after the iframe was loaded and ready for action
+            initCallback: function (data) {
+                console.log('Got iframe ready:' + data.ns);
+            }
+        }
+    );
+```
 ## API
 
 ```js
     // Store
-    xdLocalStorage.setItem("ls1", key, value, function (data) { /* callback */ });
+    xdLocalStorage.setItem("sub.domain.com", key, value, function (data) { /* callback */ });
 
     // Retrieve
-    xdLocalStorage.getItem("ls1", key, function (data) { /* callback */ });
+    xdLocalStorage.getItem("sub.domain.com", key, function (data) { /* callback */ });
 
     // Remove
-    xdLocalStorage.removeItem("ls1", key, function (data) { /* callback */ });
+    xdLocalStorage.removeItem("sub.domain.com", key, function (data) { /* callback */ });
 
     // Key Name
-    xdLocalStorage.key("ls1", index, function (data) { /* callback */ });
+    xdLocalStorage.key("sub.domain.com", index, function (data) { /* callback */ });
 
     // Clear All
-    xdLocalStorage.clear("ls1", function (data) { /* callback */ });
+    xdLocalStorage.clear("sub.domain.com", function (data) { /* callback */ });
 ```
 
 ## Limitations
