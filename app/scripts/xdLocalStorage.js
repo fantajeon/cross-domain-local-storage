@@ -75,11 +75,14 @@ function attach_iframe(exporter, iframe) {
 
 function createiframe(exporter, customOptions) {
   options = XdUtils.extend(customOptions, options);
-  var temp = document.createElement('div');
-  options.iframeId = "cross-domain-local-storage-" + options.nameSpace;
-  temp.innerHTML = '<iframe id="' + options.iframeId + '" src=' + options.iframeUrl + ' style="display: none;"></iframe>';
-  document.body.appendChild(temp);
   var iframe = document.getElementById(options.iframeId);
+  if( iframe == null ) {
+    var temp = document.createElement('div');
+    options.iframeId = "cross-domain-local-storage-" + options.nameSpace;
+    temp.innerHTML = '<iframe id="' + options.iframeId + '" src=' + options.iframeUrl + ' style="display: none;"></iframe>';
+    document.body.appendChild(temp);
+    iframe = document.getElementById(options.iframeId);
+  }
   iframe.state = "init";
   iframe.ns = options.nameSpace;
   iframe.id = options.iframeId;
