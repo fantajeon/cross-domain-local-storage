@@ -45,7 +45,7 @@ yarn add xdlocalstorage-separately
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="xdLocalStoragePostMessageApi.min.js"></script>
+    <script src="xdLocalStorage.min.js"></script>
 </head>
 <body>
     This is the magical iframe
